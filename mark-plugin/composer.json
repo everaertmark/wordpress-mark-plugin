@@ -1,0 +1,15 @@
+{
+    "name": "mark/mark-plugin",
+    "description": "Starter plugin",
+    "type": "project",
+    "license": "GPL",
+    "minimum-stability": "dev",
+    "require": {
+
+    },
+    "autoload": {
+        "psr-4": {
+            "Inc\\": "./inc"
+        }
+    }
+}

@@ -18,6 +18,14 @@ if (!defined('ABSPATH')) {
     die('No access given');
 }
 
+if (file_exists(dirname(__FILE__). '/vendor/autoload.php')) {
+    require_once dirname(__FILE__). '/vendor/autoload.php';
+}
+
+use Inc\Activate;
+use Inc\Deactivate;
+use Inc\Admin\AdminPages;
+
 class MarkPlugin {
 
     public $plugin;
@@ -58,11 +66,8 @@ class MarkPlugin {
     }
 
     public function activate() {
-        require_once plugin_dir_path(__FILE__) . 'inc/mark-plugin-activate.php';
-        MarkPluginActivate::activate();
+        activate::activate();
     }
-
-    
 
     function enqueue() {
         wp_enqueue_style('mypluginstyle', plugins_url('assets/mystyle.css', __FILE__));
@@ -79,8 +84,8 @@ if ( class_exists('MarkPlugin') ) {
 register_activation_hook( __FILE__, array( $markPlugin, 'activate' ) );
 
 //deactivation
-require_once plugin_dir_path(__FILE__) . 'inc/mark-plugin-deactivate.php';
-register_deactivation_hook( __FILE__, array( 'MarkPluginDeactivate', 'deactivate' ) );
+// require_once plugin_dir_path(__FILE__) . 'inc/mark-plugin-deactivate.php';
+register_deactivation_hook( __FILE__, array( 'Deactivate', 'deactivate' ) );
 
 //uninstall
 // register_uninstall_hook( __FILE__, array( $markPlugin, 'uninstall' ) );
