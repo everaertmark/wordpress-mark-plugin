@@ -81,7 +81,7 @@ class Admin extends BaseController{
             array(
                 'option_group' => 'mark_options_group',
                 'option_name' => 'text_example',
-                'callback' => array( $this->callbacks, 'markOptionGroup')
+                'callback' => array( $this->callbacks, 'markOptionsGroup')
             ),
             array(
                 'option_group' => 'mark_options_group',
